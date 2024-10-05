@@ -36,7 +36,7 @@ const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
         {data && data.results.map((movie) => (
           <div key={movie.id} className="rounded-md m-5 sm:max-w-[300px] min-h-[250px] bg-slate-500">
-            <Link to={`/movies-app/${movie.id}`}>
+            <Link to={`/${movie.id}`}>
               <img
                 src={`${imageBaseUrl}${movie.backdrop_path}`}
                 className="h-[250px] w-full rounded-md"

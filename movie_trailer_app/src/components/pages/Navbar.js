@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <div className="navbar bg-background-slate h-24 flex justify-between items-center px-4 sm:px-20 relative z-10">
-      <Link to="/movies-app" className="font-bold text-xl sm:text-3xl text-accent-cyan">
+      <Link to="/" className="font-bold text-xl sm:text-3xl text-accent-cyan">
         <img src={movieLogo} alt="Movie Logo" className="h-10 w-10" />
       </Link>
 

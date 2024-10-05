@@ -14,7 +14,7 @@ import MovieDetail, { fetchSingleMovie } from "./components/pages/MovieDetail";
 
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path="/movies-app" element={<MoviesLayout />}>
+  <Route path="/" element={<MoviesLayout />}>
     <Route index element={<MoviesHomepage />}/>
     <Route path="featured"  element={<FeaturedMovies />}/>
     <Route path="all-featured-movies" element={<AllFeaturedMovies />} />
