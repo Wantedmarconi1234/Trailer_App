@@ -12,6 +12,8 @@ function UpcomingMovies() {
       );
       return response.json();
     },
+    staleTime: 60000,      // Data will be considered fresh for 1 minute
+    cacheTime: 300000,     // Cache will be kept for 5 minutes after unused
   });
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
