@@ -84,7 +84,7 @@ function SearchMovies() {
             data.results.map((movie) => (
               <Link
                 onClick={handleCloseSearch}
-                to={`/movies-app/${movie.id}`}
+                to={`/${movie.id}`}
                 key={movie.id}
                 className="movie-item p-2 bg-slate-700 rounded-md hover:shadow-lg transition-shadow"
               >
