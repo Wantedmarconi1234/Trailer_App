@@ -24,8 +24,8 @@ function FeaturedMovies() {
   return (
     <section className="min-h-[400px] my-5">
       {/* "More" link */}
-      <Link to="all-featured-movies" className="flex justify-end">
-        <CiCircleMore className='hover:text-highlight-orange font-bold text-2xl mx-5 mb-4'/>
+      <Link to="all-featured-movies" className="flex justify-end mx-[10px] sm:mx-24">
+        <CiCircleMore className='hover:text-highlight-orange font-bold text-2xl'/>
       </Link>
 
       {/* Movies list */}

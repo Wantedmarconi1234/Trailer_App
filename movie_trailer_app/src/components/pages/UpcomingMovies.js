@@ -22,9 +22,11 @@ function UpcomingMovies() {
   if (error) return <div>Error fetching upcoming movies</div>;
 
   return (
-    <section className="upcoming-movies h-[350px] my-5 bg-gray-900">
-       <Link to="all-upcoming-movies" className="flex justify-end"><CiCircleMore className='hover:text-highlight-orange font-bold text-2xl mx-24 mb-4'/></Link>
-      <div className="flex items-center overflow-x-scroll mx-24">
+    <section className="min-h-[400px] my-5">
+      <Link to="all-upcoming-movies" className="flex justify-end mx-[10px] sm:mx-24">
+        <CiCircleMore className='hover:text-highlight-orange font-bold text-2xl  mb-4'/>
+      </Link>
+      <div className="flex items-center overflow-x-scroll sm:mx-20 mx-5">
         {data?.results.map((movie) => (
           <div 
           key={movie.id} 

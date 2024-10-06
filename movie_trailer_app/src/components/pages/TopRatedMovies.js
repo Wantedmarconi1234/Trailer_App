@@ -22,9 +22,11 @@ function TopRatedMovies() {
   if (error) return <div>Error fetching top-rated movies</div>;
 
   return (
-    <section className="sm:min-h-[400px] min-h-[200px] my-5 bg-gray-900">
-      <Link to="all-top-rated-movies" className="flex justify-end"><CiCircleMore className='hover:text-highlight-orange font-bold text-2xl mx-24 mb-4'/></Link>
-      <div className="flex items-center overflow-x-scroll mx-24">
+    <section className="min-h-[400px] my-5">
+      <Link to="all-top-rated-movies" className="flex justify-end mx-[10px] sm:mx-24">
+        <CiCircleMore className='hover:text-highlight-orange font-bold text-2xl mx-5 mb-4'/>
+      </Link>
+      <div className="flex items-center overflow-x-scroll mx-5 sm:mx-20">
         {data?.results.map((movie) => (
           <div 
           key={movie.id} 
