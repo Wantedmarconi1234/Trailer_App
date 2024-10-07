@@ -16,13 +16,14 @@ function UpcomingMovies() {
     cacheTime: 300000,     // Cache will be kept for 5 minutes after unused
   });
 
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; //base url for images
 
-  if (isLoading) return <div>Loading Upcoming Movies...</div>;
-  if (error) return <div>Error fetching upcoming movies</div>;
+  if (isLoading) return <div>Loading Upcoming Movies...</div>; //checking for loading data
+  if (error) return <div>Error fetching upcoming movies</div>; // checking for loading data
 
   return (
     <section className="min-h-[400px] my-5">
+      {/* icon to view more upcoming movies */}
       <Link to="all-upcoming-movies" className="flex justify-end mx-[10px] sm:mx-24">
         <CiCircleMore className='hover:text-highlight-orange font-bold text-2xl  mb-4'/>
       </Link>

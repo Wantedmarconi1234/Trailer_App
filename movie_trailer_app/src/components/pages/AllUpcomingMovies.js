@@ -4,28 +4,34 @@ import { FaAnglesRight } from "react-icons/fa6";
 import { FaAnglesLeft } from "react-icons/fa6";
 
 function FeaturedMovies() {
-const [data, setData] = useState()
-const [pageCount, setPageCount] = useState(1)
+const [data, setData] = useState() //state for all upcoming movies data
+const [pageCount, setPageCount] = useState(1)//state for pages
+const [loading, setIsLoading] = useState(false) //state for loading
 
-const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'; //base url for img
 
   useEffect( () => {
     const fetchData = async () => {
+      setIsLoading(true)
         try {
             const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&page=${pageCount}`); 
             const responseData = await response.json()
             setData(responseData)
         } catch (error) {
             console.log("There was an error", error)
+        }finally {
+          setIsLoading(false)
         }
     }
     fetchData()
-  },[pageCount])
+  },[pageCount]) //render when page number changes
 
+  //decreasing page count 
   const decreaseCount = () => {
     setPageCount( prevCount => prevCount - 1)
   }
 
+  //increasing page count 
   const addCount = () => {
     setPageCount( prevCount => prevCount + 1)
   }
@@ -34,21 +40,29 @@ const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
   return (
     <section className="h-full my-5">
       <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
-        {data && data.results.map((movie) => (
-          <div key={movie.id} className="rounded-md m-5 sm:max-w-[300px] min-h-[250px] bg-slate-500">
-            <Link to={`/${movie.id}`}>
-              <img
-                src={`${imageBaseUrl}${movie.backdrop_path}`}
-                className="h-[250px] w-full rounded-md"
-                alt={movie.title}
-              />
-            </Link>
-            <p className="text-center text-gray-300 mt-2 font-bold">{movie.title}</p>
-          </div>
-        ))}
+      {
+        loading ? (
+          <div className="col-span-full text-center text-white">Loading...</div> //checking for loading data
+        ) : (
+          data && data.results.map((movie) => (
+            <div key={movie.id} className="rounded-md m-5 sm:max-w-[300px] min-h-[250px] bg-slate-500">
+              <Link to={`/${movie.id}`}>
+                <img
+                  src={`${imageBaseUrl}${movie.backdrop_path}`}
+                  className="h-[250px] w-full rounded-md"
+                  alt={movie.title}
+                />
+              </Link>
+              <p className="text-center text-gray-300 mt-2 font-bold">{movie.title}</p>
+            </div>
+          ))
+        )}
+       {/* Pagination Controls */}
       </div>
       <div className='flex items-center justify-center cursor-pointer'>
-        <FaAnglesLeft  className={`${pageCount === 1 ? "hidden" : "block"} text-white hover:text-highlight-yellow mx-2 text-2xl`} onClick={decreaseCount}/>
+        {/* hide when page number is one */}
+        <FaAnglesLeft  className={`${pageCount === 1 ? "hidden" : "block"} text-white hover:text-highlight-yellow mx-2 text-2xl`} 
+          onClick={decreaseCount}/> 
         <h1 className='grid place-content-center font-bold bg-violet-950 rounded-full w-[40px] h-[40px] text-[#ffff]'>{pageCount}</h1>
         <FaAnglesRight className='mx-2 text-2xl text-white hover:text-highlight-yellow'onClick={addCount}/>
       </div>

@@ -9,10 +9,7 @@ function SearchMovies() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['searchMovies', searchTerm],
     queryFn: async () => {
-      if (!searchTerm) return;
-      
-      // Debugging - Log the API call
-      console.log('Fetching movies for search term:', searchTerm);
+      if (!searchTerm) return; //checking for inputs/ search-term
       
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchTerm}`
@@ -23,9 +20,6 @@ function SearchMovies() {
       }
 
       const data = await response.json();
-      
-      // Debugging - Log the response data
-      console.log('Fetched data:', data);
       
       return data;
     },
@@ -38,10 +32,6 @@ function SearchMovies() {
       alert('Please enter a search term');
       return;
     }
-    
-    // Debugging - Log the search term
-    console.log('Setting search term:', query);
-    
     setSearchTerm(query);
   };
 

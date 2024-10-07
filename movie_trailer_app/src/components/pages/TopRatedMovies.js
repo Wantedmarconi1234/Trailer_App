@@ -18,8 +18,8 @@ function TopRatedMovies() {
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
-  if (isLoading) return <div>Loading Top-Rated Movies...</div>;
-  if (error) return <div>Error fetching top-rated movies</div>;
+  if (isLoading) return <div>Loading Top-Rated Movies...</div>; //checking for loading state
+  if (error) return <div>Error fetching top-rated movies</div>; // check for error whiles loading data
 
   return (
     <section className="min-h-[400px] my-5">
